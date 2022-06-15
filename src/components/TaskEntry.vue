@@ -1,5 +1,5 @@
 <template>
-  <div class="alert alert-secondary">
+  <div class="alert" :class="alertClass">
     {{ content }}
   </div>
 </template>
@@ -9,6 +9,15 @@ export default {
   name: "TaskEntry",
   props: {
     content: String,
+    alertColor: {
+      type: String,
+      default: "secondary",
+    }
+  },
+  computed: {
+    alertClass() {
+      return `alert-${this.alertColor}`;
+    }
   }
 }
 </script>

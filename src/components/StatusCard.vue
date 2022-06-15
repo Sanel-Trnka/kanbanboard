@@ -4,7 +4,7 @@
       <h4>{{ title }}</h4>
     </div>
     <div class="card-body" v-for="task in tasks" :key="task.id">
-      <TaskEntry :content="task.content" />
+      <TaskEntry :content="task.content" :alert-color="alertColor"/>
     </div>
     <div v-if="tasks.length === 0">
       <div class="card-body">
@@ -31,6 +31,16 @@ export default {
     status: Number,
     newTasks: Boolean,
     tasks: Array,
+  },
+  computed: {
+    alertColor() {
+      switch (this.status) {
+        case 0: return "secondary"
+        case 1: return "primary"
+        case 2: return "success"
+        default: return "danger"
+      }
+    }
   }
 }
 </script>
