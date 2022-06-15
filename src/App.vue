@@ -2,7 +2,7 @@
   <div class="container mt-5">
     <div class="row">
       <div class="col-4" v-for="statusCard in statusCards" :key="statusCard.status">
-        <StatusCard :title="statusCard.title" :tasks="filteredTasks(statusCard.status)" :titleClasses="statusCard.titleClasses" :newTasks="statusCard.newTasks" :status="statusCard.status" />
+        <StatusCard @new-task="addTask" :title="statusCard.title" :tasks="filteredTasks(statusCard.status)" :titleClasses="statusCard.titleClasses" :newTasks="statusCard.newTasks" :status="statusCard.status" />
       </div>
     </div>
   </div>
@@ -53,6 +53,10 @@ export default {
     filteredTasks(status) {
       return this.tasks.filter((task) => task.status === status);
     },
+    addTask(task) {
+      task.id = this.tasks.length;
+      this.tasks.push(task)
+    }
   },
 };
 </script>
