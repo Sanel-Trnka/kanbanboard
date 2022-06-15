@@ -6,6 +6,13 @@
     <div class="card-body" v-for="task in tasks" :key="task.id">
       <TaskEntry :content="task.content" />
     </div>
+    <div v-if="tasks.length === 0">
+      <div class="card-body">
+        <div class="alert alert-secondary">
+          Es gibt im Moment keine Aufgaben hier!
+        </div>
+      </div>
+    </div>
     <div class="card-footer" v-if="newTasks">
       <NewTask />
     </div>
