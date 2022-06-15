@@ -32,19 +32,19 @@ export default {
           title: "Neue Aufgaben",
           titleClasses: "bg-secondary",
           newTasks: true,
-          status: 2,
+          status: 0,
         },
         {
           title: "In Bearbeitung",
           titleClasses: "bg-primary",
           newTasks: false,
-          status: 0,
+          status: 1,
         },
         {
           title: "Erledigt",
           titleClasses: "bg-success",
           newTasks: false,
-          status: 0,
+          status: 2,
         },
       ],
     };
