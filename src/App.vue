@@ -1,8 +1,8 @@
 <template>
   <div class="container mt-5">
     <div class="row">
-      <div class="col-4" v-for="i in 3" :key="i">
-        <StatusCard />
+      <div class="col-4" v-for="statusCard in statusCards" :key="statusCard.status">
+        <StatusCard :title="statusCard.title" :tasks="filteredTasks(statusCard.status)" :titleClasses="statusCard.titleClasses" :newTasks="statusCard.newTasks" :status="statusCard.status" />
       </div>
     </div>
   </div>
@@ -24,14 +24,34 @@ export default {
         {
           id: 2,
           content: "Anwendung auf Vue.js umstellen.",
+          status: 1,
+        },
+      ],
+      statusCards: [
+        {
+          title: "Neue Aufgaben",
+          titleClasses: "bg-secondary",
+          newTasks: true,
+          status: 2,
+        },
+        {
+          title: "In Bearbeitung",
+          titleClasses: "bg-primary",
+          newTasks: false,
+          status: 0,
+        },
+        {
+          title: "Erledigt",
+          titleClasses: "bg-success",
+          newTasks: false,
           status: 0,
         },
       ],
     };
   },
-  computed: {
-    newTasks() {
-      return this.tasks.filter((task) => task.status === 0);
+  methods: {
+    filteredTasks(status) {
+      return this.tasks.filter((task) => task.status === status);
     },
   },
 };

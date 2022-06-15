@@ -1,12 +1,15 @@
 <template>
   <div class="alert alert-secondary">
-    Content
+    {{ content }}
   </div>
 </template>
 
 <script>
 export default {
-  name: "TaskEntry"
+  name: "TaskEntry",
+  props: {
+    content: String,
+  }
 }
 </script>
 
